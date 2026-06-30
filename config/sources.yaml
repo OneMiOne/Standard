@@ -1,0 +1,10 @@
+sources:
+  - name: adblock
+    url: https://raw.githubusercontent.com/217heidai/adblockfilters/main/rules/adblockmihomo.yaml
+    behavior: domain
+    output: adblock
+
+  - name: tracking
+    url: https://github.com/666OS/rules/raw/refs/heads/release/mihomo/domain/Tracking.txt
+    behavior: domain
+    output: tracking
