@@ -1,0 +1,79 @@
+name: Build Mihomo MRS Rulesets
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 */8 * * *"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: mihomo-mrs-builder
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Setup Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install Python Dependencies
+        run: pip install -r requirements.txt
+
+      - name: Download Mihomo
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          API_URL="https://api.github.com/repos/MetaCubeX/mihomo/releases/latest"
+
+          echo "::group::Resolve Latest Mihomo Asset"
+          ASSET_URL="$(curl -fsSL "$API_URL" \
+            | jq -r '.assets[] | select(.name | test("^mihomo-linux-amd64-v[0-9].*\\.gz$")) | .browser_download_url' \
+            | head -n 1)"
+
+          if [ -z "$ASSET_URL" ]; then
+            echo "::error::Cannot Find Mihomo Linux Amd64 Asset"
+            exit 1
+          fi
+
+          echo "Asset URL: $ASSET_URL"
+          echo "::endgroup::"
+
+          echo "::group::Install Mihomo"
+          curl -fL "$ASSET_URL" -o mihomo.gz
+          gzip -d mihomo.gz
+          chmod +x mihomo
+          sudo mv mihomo /usr/local/bin/mihomo
+          mihomo -v
+          echo "::endgroup::"
+
+      - name: Build Rulesets
+        run: python scripts/build.py
+
+      - name: Commit Generated Files
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          git config user.name "Github-Actions-BOT"
+          git config user.email "Github-Actions-BOT@Users.Noreply.Github.Com"
+
+          git add -f dist/*.list dist/*.mrs
+
+          if git diff --cached --quiet; then
+            echo "No Generated Changes"
+          else
+            git commit -m "Update Mihomo MRS Rulesets"
+            git push
+          fi
