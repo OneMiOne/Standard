@@ -8,3 +8,8 @@ sources:
     url: https://github.com/666OS/rules/raw/refs/heads/release/mihomo/domain/Tracking.txt
     behavior: domain
     output: tracking
+
+  - name: emby
+    url: https://github.com/666OS/rules/raw/refs/heads/release/mihomo/domain/Emby.txt
+    behavior: domain
+    output: emby
