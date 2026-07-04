@@ -10,7 +10,7 @@ sources:
     output: tracking
 
   - name: emby
-    url: https://github.com/666OS/rules/raw/refs/heads/release/mihomo/domain/Emby.txt
+    url: https://github.com/OneMiOne/Mini/raw/refs/heads/main/Rule/emby.list
     behavior: domain
     output: emby
 
