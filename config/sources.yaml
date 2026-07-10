@@ -18,3 +18,8 @@ sources:
     url: https://github.com/OneMiOne/Mini/raw/refs/heads/main/Rule/pikpak.list
     behavior: domain
     output: pikpak
+
+  - name: streaming
+    url: https://github.com/OneMiOne/Mini/raw/refs/heads/main/Rule/streaming.list
+    behavior: domain
+    output: streaming
