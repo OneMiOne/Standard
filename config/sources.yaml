@@ -18,3 +18,23 @@ sources:
     url: https://github.com/OneMiOne/Mini/raw/refs/heads/main/Rule/pikpak.list
     behavior: domain
     output: pikpak
+
+  - name: google
+    url: https://github.com/666OS/rules/raw/refs/heads/release/mihomo/domain/Google.txt
+    behavior: domain
+    output: google
+
+  - name: gemini
+    url: https://github.com/666OS/rules/raw/refs/heads/release/mihomo/domain/Gemini.txt
+    behavior: domain
+    output: gemini
+
+  - name: ai
+    url: https://github.com/666OS/rules/raw/refs/heads/release/mihomo/domain/AI.txt
+    behavior: domain
+    output: ai
+
+  - name: netflix
+    url: https://github.com/666OS/rules/raw/refs/heads/release/mihomo/domain/Netflix.txt
+    behavior: domain
+    output: netflix
