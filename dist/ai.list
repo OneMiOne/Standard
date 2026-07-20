@@ -24,6 +24,7 @@
 +.chat.com
 +.chatgpt.com
 +.chatgpt.livekit.cloud
++.chatgpt.site
 +.chutes.ai
 +.cici.com
 +.ciciai.com
@@ -48,6 +49,7 @@
 +.comfy.org
 +.comfyci.org
 +.comfyregistry.org
++.copilot-stg.com
 +.copilot.cloud.microsoft
 +.copilot.com
 +.copilot.microsoft.com
@@ -75,6 +77,7 @@
 +.envatousercontent.com
 +.events.statsigapi.net
 +.featuregates.org
++.flow.google
 +.gateway.ai.cloudflare.com
 +.gateway.icloud.com
 +.geller-pa.googleapis.com
@@ -187,6 +190,9 @@ ai.google.dev
 aistudio.google.com
 alkalicore-pa.clients6.google.com
 alkalimakersuite-pa.clients6.google.com
+anthropic-com.ghost.io
+anthropic.auth0.com
+anthropic.com.cdn.cloudflare.net
 antigravity-pa.googleapis.com
 antigravity-unleash.goog
 antigravity.google
